@@ -19,11 +19,11 @@ const getRequestBody = (req) => {
 
 //criar tarefa
 const createTask = async (req,res) => {
-    const body = await getRequesteBody (req);
+    const body = await getRequestBody (req);
 
     const task = taskService.addTask(body.title);
 
-    req.statusCode = 201;
+    res.statusCode = 201;
     res.end(JSON.stringify(task));
 };
 
@@ -44,11 +44,24 @@ const updateTask = async (req, res, id) => {
     if(!task){
         res.statusCode = 404;
         return res.end (JSON.stringify(
+            { message: 'Não encontrada' })
+        );
+    }
+
+    res.end(JSON.stringify(task));
+};
+
+const deleteTask = (req, res, id) => {
+    const success = taskService.deleteTask(id);
+
+    if(!success){
+        res.statusCode = 404;
+        return res.end(JSON.stringify(
             { message: 'Não encontrada' }
         ));
     }
 
-    res.end(JSON.stringify({ messsage: 'Removida'}));
+    res.end(JSON.stringify({ message: 'Removida' }));
 };
 
 module.exports = {
@@ -56,4 +69,4 @@ module.exports = {
     listTasks,
     updateTask,
     deleteTask
-}
+};

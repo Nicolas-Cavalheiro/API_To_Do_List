@@ -1,6 +1,6 @@
 //arquivo services
 
-const { createTask } = require(`../models/taskModels`);
+const { createTask } = require('../models/taskModels');
 
 let tasks = [];
 let idcounter = 1;

@@ -31,5 +31,5 @@ module.exports = (req, res) => {
 
     //rota nao encontrada
     res.statusCode = 404;
-    res.end(JSON.stringify({ message: 'Rota não encontrada '}));
+    res.end(JSON.stringify({ message: 'Rota não encontrada'}));
 }

@@ -21,4 +21,4 @@ const PORT = 3000;
 //inicia o servidor
 server.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
-})
+});
