@@ -3,7 +3,7 @@
 const { createTask } = require('../models/taskModels');
 
 let tasks = [];
-let idcounter = 1;
+let idCounter = 1;
 
 //criar
 const addTask = (title) => {

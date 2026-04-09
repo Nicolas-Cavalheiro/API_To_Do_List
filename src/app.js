@@ -3,7 +3,7 @@
 const http = require('http');
 
 //importa as rotas
-const taskRoutes = require ('./routes/tasks');
+const taskRoutes = require ('./routes/taskRoutes');
 
 //cria um servidor
 const server = http.createServer((req, res) => {
