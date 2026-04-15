@@ -1,0 +1,41 @@
+//arquivo routes
+
+const taskController = require ('../controllers/taskControllers');
+
+module.exports = (req, res) => {
+    
+    const url = req.url;
+    const method = req.method;
+
+    //GET /tasks
+    if (url === '/tasks' && method === 'GET') {
+        return taskController.listTasks(req, res);
+    }
+
+    //GET /tasks/:id
+    if(url.startsWith('/tasks/') && method === 'GET'){
+        const id = url.split('/')[2];
+        return taskController.searchTask(req, res, id);
+    }
+
+    //POST /tasks
+    if (url === '/tasks' && method === 'POST') {
+        return taskController.createTask(req, res);
+    }
+
+    //PUT /tasks/:id
+    if (url.startsWith('/tasks/') && method === 'PUT') {
+        const id = url.split('/')[2];
+        return taskController.updateTask(req, res, id);
+    }
+
+    //DELETE /tasks/:id
+    if (url.startsWith('/tasks/') && method === 'DELETE') {
+        const id = url.split('/')[2];
+        return taskController.deleteTask(req, res, id);
+    }
+
+    //rota nao encontrada
+    res.statusCode = 404;
+    res.end(JSON.stringify({ message: 'Rota não encontrada'}));
+}
