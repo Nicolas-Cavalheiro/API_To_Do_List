@@ -39,7 +39,7 @@ const listTasks = (req, res) => {
 const updateTask = async (req, res, id) => {
     const body = await getRequestBody(req);
 
-    const task = taskService.updateTask(id, body.title, body.completed);
+    const task = taskService.updateTask(id, body.title);
 
     if(!task){
         res.statusCode = 404;
@@ -64,23 +64,9 @@ const deleteTask = (req, res, id) => {
     res.end(JSON.stringify({ message: 'Removida' }));
 };
 
-const searchTask = (req, res, id) => {
-    const search = taskService.searchTask(id);
-
-    if(!search){
-        res.statusCode = 404;
-        return res.end(JSON.stringify(
-            { message: 'Não encontrada' }
-        ));
-    }
-
-    res.end(JSON.stringify(search));
-}
-
 module.exports = {
     createTask,
     listTasks,
     updateTask,
-    deleteTask,
-    searchTask
+    deleteTask
 };

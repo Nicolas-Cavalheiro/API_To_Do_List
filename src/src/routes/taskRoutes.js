@@ -12,12 +12,6 @@ module.exports = (req, res) => {
         return taskController.listTasks(req, res);
     }
 
-    //GET /tasks/:id
-    if(url.startsWith('/tasks/') && method === 'GET'){
-        const id = url.split('/')[2];
-        return taskController.searchTask(req, res, id);
-    }
-
     //POST /tasks
     if (url === '/tasks' && method === 'POST') {
         return taskController.createTask(req, res);

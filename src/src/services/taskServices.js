@@ -16,12 +16,11 @@ const addTask = (title) => {
 const getTasks = () => tasks;
 
 //atualizar
-const updateTask = (id, title, completed) => {
+const updateTask = (id, title) => {
     const task = tasks.find(t => t.id == id);
     if (!task) return null;
 
     task.title = title;
-    task.completed = completed;
     return task;
 };
 
@@ -34,16 +33,9 @@ const deleteTask = (id) => {
     return true;
 };
 
-const searchTask = (id) => {
-    const task = tasks.find(t => t.id == id);
-    if (!task) return null;
-    return task;
-}
-
 module.exports = {
     addTask,
     getTasks,
     updateTask,
-    deleteTask,
-    searchTask
+    deleteTask
 };
